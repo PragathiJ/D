@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "http://example.com/array3.json",
+	"type": "array",
+	"title": "Different types of elements",
+	"items": [{
+			"type": "boolean"
+		},
+		{
+			"type": "object",
+			"properties": {
+				"key1": {
+					"type": "string"
+				},
+				"key2": {
+					"type": "string"
+				}
+			},
+
+			"required": ["key1", "key2"]
+		},
+		{
+			"type": "number",
+			"minimum": -42
+		},
+		{
+			"$ref": "http://example.com/array2.json"
+		}
+
+
+
+	]
+
+
+
+}
