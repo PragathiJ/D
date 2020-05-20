@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/array1.json",
+    "type": "array",
+    "title": "Grades",
+    "description": "The grades of a student in 4 subjects",
+    "items": [
+        {"type": "string", "maxLength": 1},
+        {"type": "string", "maxLength": 1},
+        {"type": "string", "maxLength": 1},
+        {"type": "string", "maxLength": 1}
+    ],
+    "additionalItems": false
+    
+}
