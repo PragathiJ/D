@@ -1,0 +1,107 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "http://example.com/frequency.json",
+	"type": "array",
+	"title": "Different co-ordinate systems",
+	"minItems": 3,
+	"items": [{
+			"type": "number"
+		},
+		{
+			"type": "number"
+		},
+		{
+			"type": "number"
+		},
+		{
+			"anyOf": [{
+					"type": "object",
+					"properties": {
+						"r": {
+							"type": "number"
+						},
+						"theta": {
+							"type": "number",
+							"minimum": 0,
+							"maximum": 360
+						},
+						"z": {
+							"type": "number"
+						}
+					},
+					"additionalProperties": false,
+
+					"required": ["r", "theta", "z"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"r": {
+							"type": "number"
+						},
+						"theta": {
+							"type": "number",
+							"minimum": 0,
+							"maximum": 360
+						},
+						"phi": {
+							"type": "number",
+							"minimum": 0,
+							"maximum": 180
+						}
+					},
+					"additionalProperties": false,
+
+					"required": ["r", "theta", "phi"]
+				}
+			]
+		},
+		{
+			"anyOf": [{
+					"type": "object",
+					"properties": {
+						"r": {
+							"type": "number"
+						},
+						"theta": {
+							"type": "number",
+							"minimum": 0,
+							"maximum": 360
+						},
+						"z": {
+							"type": "number"
+						}
+					},
+					"additionalProperties": false,
+
+					"required": ["r", "theta", "z"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"r": {
+							"type": "number"
+						},
+						"theta": {
+							"type": "number",
+							"minimum": 0,
+							"maximum": 360
+						},
+						"phi": {
+							"type": "number",
+							"minimum": 0,
+							"maximum": 180
+						}
+					},
+					"additionalProperties": false,
+
+					"required": ["r", "theta", "phi"]
+				}
+			]
+		}
+
+
+
+	],
+	"additionalItems": false
+}
