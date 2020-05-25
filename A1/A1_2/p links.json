@@ -1,0 +1,15 @@
+{
+  "@context" :[ "https://www.w3.org/2019/wot/td/v1",
+  
+  "links": [{
+    "rel": "about",
+    "href": "https://example.com/things/TempSensor",
+    "type": "application/td+json"
+},
+{
+    "rel": "duplicate",
+    "href": "https://example.com/things/TempSensor/TD",
+    "type": "application/td+json"
+}]
+
+}
