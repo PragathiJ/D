@@ -1,0 +1,8 @@
+{
+  "@context" :[ "https://www.w3.org/2019/wot/td/v1",
+  "https://www.w3.org/2019/wot/td/v1"],
+  "@version": { "instance": "10.21.2"},
+  "title": "MyTD_Version",
+  "securityDefinitions": { "nosec_sc": { "scheme": "nosec" }},
+  "security": "nosec_sc"
+}
