@@ -1,0 +1,34 @@
+{
+
+"events": {
+     "emergencyButton":
+     {
+     
+     },
+
+    "position" : {
+    
+        "subscription":{"type": "number"},
+        
+         "data": {
+            "type": "object",
+            "properties": {
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                },
+                "z": {
+                    "type": "number"
+                }
+                
+            },
+            "required": ["x","y","z"],
+            "additionalproperties":"false"
+        }
+        
+    
+    }
+    }
+    }
