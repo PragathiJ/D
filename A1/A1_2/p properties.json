@@ -1,0 +1,22 @@
+{
+  "@context" :[ "https://www.w3.org/2019/wot/td/v1"],
+
+  "properties": {
+    "targetSpeed": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 120.0,
+        "unit": "km/h"
+    },
+    "currentSpeed": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 120.0,
+        "unit": "km/h",
+        "readOnly": true,
+        "observable": true
+    }
+        
+        
+    }
+}
