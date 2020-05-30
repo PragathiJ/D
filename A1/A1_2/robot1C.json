@@ -45,26 +45,26 @@
 			"observable": true,
 			"forms": [{
 					"op": "readproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/readlocation",
 					"contentType": "application/json",
 					"htv:methodName": "GET"
 				},
 				{
 					"op": "observeproperty",
-					"href": "http://example.org/robot1/observeprop",
+					"href": "http://example.org/robot1/observelocation",
 					"contentType": "application/json",
 					"htv:methodName": "GET",
 					"subprotocol": "longpoll"
 				},
                 {
 					"op": "readproperty",
-					"href": "coaps://192.168.0.101:5683/robot1",
+					"href": "coaps://192.168.0.101:5683/robot1/readlocation",
 					"contentType": "application/cbor",
 					"cov:methodName": "GET"
 				},
 				{
 					"op": "observeproperty",
-					"href": "coaps://192.168.0.101:5683/robot1/observeprop",
+					"href": "coaps://192.168.0.101:5683/robot1/observelocation",
 					"contentType": "application/cbor",
 					"cov:methodName": "GET",
 					"subprotocol": "longpoll"
@@ -81,25 +81,25 @@
 			"writeonly": true,
 			"forms": [{
 					"op": "readproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/readstate",
 					"contentType": "application/json",
 					"htv:methodName": "GET"
 				},
 				{
 					"op": "writeproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/writestate",
 					"contentType": "application/json",
 					"htv:methodName": "PUT"
 				},
                 {
 					"op": "readproperty",
-					"href": "coaps://192.168.0.101:5683/robot1",
+					"href": "coaps://192.168.0.101:5683/robot1/readstate",
 					"contentType": "application/cbor",
 					"cov:methodName": "GET"
 				},
 				{
 					"op": "writeproperty",
-					"href": "coaps://192.168.0.101:5683/robot1",
+					"href": "coaps://192.168.0.101:5683/robot1/writestate",
 					"contentType": "application/cbor",
 					"cov:methodName": "PUT"
 				}
@@ -117,25 +117,25 @@
 			"writeonly": true,
 			"forms": [{
 					"op": "readproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/readfrequency",
 					"contentType": "application/json",
 					"htv:methodName": "GET"
 				},
 				{
 					"op": "writeproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/writefrequency",
 					"contentType": "application/json",
 					"htv:methodName": "PUT"
 				},
                 {
 					"op": "readproperty",
-					"href": "coaps://192.168.0.101:5683/robot1",
+					"href": "coaps://192.168.0.101:5683/robot1/readfrequency",
 					"contentType": "application/cbor",
 					"cov:methodName": "GET"
 				},
 				{
 					"op": "writeproperty",
-					"href": "coaps://192.168.0.101:5683/robot1",
+					"href": "coaps://192.168.0.101:5683/robot1/writefrequency",
 					"contentType": "application/cbor",
 					"cov:methodName": "PUT"
 				}
@@ -145,13 +145,13 @@
 	},
 	"forms": [{
 		"op": "readallproperties",
-		"href": "http://example.org/robot1",
+		"href": "http://example.org/robot1/readalltheproperties",
 		"contentType": "application/json",
 		"htv:methodName": "GET"
 	},
     {
 		"op": "readallproperties",
-		"href": "coaps://192.168.0.101:5683/robot1",
+		"href": "coaps://192.168.0.101:5683/robot1/readalltheproperties",
 		"contentType": "application/cbor",
 		"cov:methodName": "GET"
 	}],
@@ -162,13 +162,13 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/RobotGoHome",
 				"contentType": "application/json",
                 "htv:methodName": "POST"
 			},
             {
 				"op": "invokeaction",
-				"href": "coaps://192.168.0.101:5683/robot1",
+				"href": "coaps://192.168.0.101:5683/robot1/RobotGoHome",
 				"contentType": "application/cbor",
                 "cov:methodName": "POST"
 			}]
@@ -205,13 +205,13 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/RobotToGoSpecificLocation",
 				"htv:methodName": "POST",
 				"contentType": "application/json"
 			},
             {
 				"op": "invokeaction",
-				"href": "coaps://192.168.0.101:5683/robot1",
+				"href": "coaps://192.168.0.101:5683/robot1/RobotToGoSpecificLocation",
 				"cov:methodName": "POST",
 				"contentType": "application/cbor"
 			}]
@@ -253,7 +253,7 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/rotateRobot",
 				"contentType": "application/json",
 				"htv:methodName": "POST",
 				"response": {
@@ -262,7 +262,7 @@
 			},
             {
 				"op": "invokeaction",
-				"href": "coaps://192.168.0.101:5683/robot1",
+				"href": "coaps://192.168.0.101:5683/robot1/rotateRobot",
 				"contentType": "application/cbor",
 				"cov:methodName": "POST",
 				"response": {
@@ -280,13 +280,13 @@
 			"subscription": {},
 			"forms": [{
 				"op": "subscribeevent",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/IndicateEmergency",
 				"contentType": "application/json",
                 "htv:methodName": "GET"
 			},
             {
 				"op": "subscribeevent",
-				"href": "coaps://192.168.0.101:5683/robot1",
+				"href": "coaps://192.168.0.101:5683/robot1/IndicateEmergency",
 				"contentType": "application/cbor",
                 "cov:methodName": "GET"
 			}]
@@ -335,13 +335,13 @@
 			},
 			"forms": [{
 				"op": "subscribeevent",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/IndicateLimitCrossing",
 				"contentType": "application/json",
                 "htv:methodName": "GET"
 			},
             {
 				"op": "subscribeevent",
-				"href": "coaps://192.168.0.101:5683/robot1",
+				"href": "coaps://192.168.0.101:5683/robot1/IndicateLimitCrossing",
 				"contentType": "application/cbor",
                 "cov:methodName": "GET"
 			}]
