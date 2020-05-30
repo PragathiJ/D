@@ -1,0 +1,13 @@
+[{
+		"op": "writeproperty",
+		"href": "http://example.org/robot1/writestate",
+		"contentType": "application/json",
+		"htv:methodName": "PUT"
+	},
+	{
+		"op": "writeproperty",
+		"href": "http://example.org/robot2/writestate",
+		"contentType": "application/json",
+		"htv:methodName": "PUT"
+	}
+]
