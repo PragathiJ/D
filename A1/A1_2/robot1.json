@@ -1,5 +1,6 @@
 {
-	"@context": ["https://www.w3.org/2019/wot/td/v1"],
+	"@context": ["https://www.w3.org/2019/wot/td/v1",
+		    {"htv":"http://example.org/robot1"}],
 
 	"title": "Robot",
 	"description": "Thing description for a simple Robot",
