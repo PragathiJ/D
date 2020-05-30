@@ -1,0 +1,353 @@
+{
+	"@context": ["https://www.w3.org/2019/wot/td/v1",
+    
+        {"htv":"http://example.org/robot1",
+         "cov": "coaps://192.168.0.101:5683/robot1" }],
+
+	"title": "Robot",
+	"description": "Thing description for a simple Robot with two URI",
+
+	"securityDefinitions": {
+		"bearer_sc": {
+        "in":"header",
+        "scheme": "bearer",
+        "format": "jwt",
+        "alg": "ES256"
+    }
+	},
+
+	"security": "bearer_sc",
+
+	"properties": {
+		"location": {
+			"type": "object",
+			"properties": {
+				"x": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 180
+				},
+				"y": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 90
+				},
+				"z": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 20
+				}
+
+			},
+			"required": ["x", "y", "z"],
+			"additionalproperties": "false",
+			"readOnly": true,
+			"observable": true,
+			"forms": [{
+					"op": "readproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "GET"
+				},
+				{
+					"op": "observeproperty",
+					"href": "http://example.org/robot1/observeprop",
+					"contentType": "application/json",
+					"htv:methodName": "GET",
+					"subprotocol": "longpoll"
+				},
+                {
+					"op": "readproperty",
+					"href": "coaps://192.168.0.101:5683/robot1",
+					"contentType": "application/cbor",
+					"cov:methodName": "GET"
+				},
+				{
+					"op": "observeproperty",
+					"href": "coaps://192.168.0.101:5683/robot1/observeprop",
+					"contentType": "application/cbor",
+					"cov:methodName": "GET",
+					"subprotocol": "longpoll"
+				}
+			]
+		},
+		"state": {
+			"type": "string",
+			"enum": [
+				"enabled",
+				"disabled"
+			],
+			"readOnly": true,
+			"writeonly": true,
+			"forms": [{
+					"op": "readproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "GET"
+				},
+				{
+					"op": "writeproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "PUT"
+				},
+                {
+					"op": "readproperty",
+					"href": "coaps://192.168.0.101:5683/robot1",
+					"contentType": "application/cbor",
+					"cov:methodName": "GET"
+				},
+				{
+					"op": "writeproperty",
+					"href": "coaps://192.168.0.101:5683/robot1",
+					"contentType": "application/cbor",
+					"cov:methodName": "PUT"
+				}
+			]
+		},
+		"updateFrequency": {
+			"type": "number",
+			"enum": [
+				1,
+				10,
+				100
+			],
+			"unit": "Hertz",
+			"readOnly": true,
+			"writeonly": true,
+			"forms": [{
+					"op": "readproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "GET"
+				},
+				{
+					"op": "writeproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "PUT"
+				},
+                {
+					"op": "readproperty",
+					"href": "coaps://192.168.0.101:5683/robot1",
+					"contentType": "application/cbor",
+					"cov:methodName": "GET"
+				},
+				{
+					"op": "writeproperty",
+					"href": "coaps://192.168.0.101:5683/robot1",
+					"contentType": "application/cbor",
+					"cov:methodName": "PUT"
+				}
+			]
+		}
+
+	},
+	"forms": [{
+		"op": "readallproperties",
+		"href": "http://example.org/robot1",
+		"contentType": "application/json",
+		"htv:methodName": "GET"
+	},
+    {
+		"op": "readallproperties",
+		"href": "coaps://192.168.0.101:5683/robot1",
+		"contentType": "application/cbor",
+		"cov:methodName": "GET"
+	}],
+
+	"actions": {
+		"goHome": {
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json",
+                "htv:methodName": "POST"
+			},
+            {
+				"op": "invokeaction",
+				"href": "coaps://192.168.0.101:5683/robot1",
+				"contentType": "application/cbor",
+                "cov:methodName": "POST"
+			}]
+
+		},
+
+		"goTo": {
+			"input": {
+				"type": "object",
+				"properties": {
+					"x": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 180
+					},
+					"y": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 90
+					},
+					"z": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 20
+					}
+
+				},
+				"required": ["x", "y", "z"],
+				"additionalproperties": "false"
+
+			},
+
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/robot1",
+				"htv:methodName": "POST",
+				"contentType": "application/json"
+			},
+            {
+				"op": "invokeaction",
+				"href": "coaps://192.168.0.101:5683/robot1",
+				"cov:methodName": "POST",
+				"contentType": "application/cbor"
+			}]
+
+
+		},
+		"rotate": {
+
+			"input": {
+				"type": "number",
+				"minimum": 0,
+				"maximum": 360
+			},
+
+			"output": {
+				"type": "object",
+				"properties": {
+					"x": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 180
+					},
+					"y": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 90
+					},
+					"z": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 20
+					}
+
+				},
+				"required": ["x", "y", "z"],
+				"additionalproperties": "false"
+			},
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json",
+				"htv:methodName": "POST",
+				"response": {
+					"contentType": "application/json"
+				}
+			},
+            {
+				"op": "invokeaction",
+				"href": "coaps://192.168.0.101:5683/robot1",
+				"contentType": "application/cbor",
+				"cov:methodName": "POST",
+				"response": {
+					"contentType": "application/cbor"
+				}
+			}]
+
+
+
+		}
+	},
+
+	"events": {
+		"emergencyButton": {
+			"subscription": {},
+			"forms": [{
+				"op": "subscribeevent",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json",
+                "htv:methodName": "GET"
+			},
+            {
+				"op": "subscribeevent",
+				"href": "coaps://192.168.0.101:5683/robot1",
+				"contentType": "application/cbor",
+                "cov:methodName": "GET"
+			}]
+		},
+
+		"limitHit": {
+
+			"subscription": {
+				
+			},
+
+			"data": {
+				"type": "object",
+				"properties": {
+					"axis": {
+						"type": "string",
+						"enum": ["x", "y", "z"]
+					}
+				},
+				"if": {
+					"properties": {
+						"axis": {
+							"const": "z"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"direction": {
+							"type": "string",
+							"enum": ["positive"]
+						}
+					}
+				},
+				"else": {
+					"properties": {
+						"direction": {
+							"type": "string",
+							"enum": ["positive", "negative"]
+						}
+					}
+				},
+				"additionalProperties": false,
+
+				"required": ["axis", "direction"]
+			},
+			"forms": [{
+				"op": "subscribeevent",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json",
+                "htv:methodName": "GET"
+			},
+            {
+				"op": "subscribeevent",
+				"href": "coaps://192.168.0.101:5683/robot1",
+				"contentType": "application/cbor",
+                "cov:methodName": "GET"
+			}]
+
+
+		}
+	}
+
+}
