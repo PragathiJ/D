@@ -114,7 +114,7 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1/togoHome",
+				"href": "http://example.org/robot1/RobotGoHome",
 				"contentType": "application/json"
 			}]
 
@@ -150,7 +150,7 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1/goToSpecificLocation",
+				"href": "http://example.org/robot1/RobotToGoSpecificLocation",
 				"htv:methodName": "POST",
 				"contentType": "application/json"
 			}]
@@ -210,7 +210,7 @@
 			"subscription": {},
 			"forms": [{
 				"op": "subscribeevent",
-				"href": "http://example.org/robot1/indicateEmergency",
+				"href": "http://example.org/robot1/IndicateEmergency",
 				"contentType": "application/json"
 			}]
 		},
@@ -258,7 +258,7 @@
 			},
 			"forms": [{
 				"op": "subscribeevent",
-				"href": "http://example.org/robot1/IndicateOutOfLimit",
+				"href": "http://example.org/robot1/IndicateLimitCrossing",
 				"contentType": "application/json",
 				"htv:methodName": "GET"
 			}]
