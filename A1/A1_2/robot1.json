@@ -1,0 +1,269 @@
+{
+	"@context": ["https://www.w3.org/2019/wot/td/v1"],
+
+	"title": "Robot",
+	"description": "Thing description for a simple Robot",
+
+	"securityDefinitions": {
+		"nosec_sc": {
+			"scheme": "nosec"
+		}
+	},
+
+	"security": "nosec_sc",
+
+	"properties": {
+		"location": {
+			"type": "object",
+			"properties": {
+				"x": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 180
+				},
+				"y": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 90
+				},
+				"z": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 20
+				}
+
+			},
+			"required": ["x", "y", "z"],
+			"additionalproperties": "false",
+			"readOnly": true,
+			"observable": true,
+			"forms": [{
+					"op": "readproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "GET"
+				},
+				{
+					"op": "observeproperty",
+					"href": "http://192.168.1.25/left{?p,d}",
+					"contentType": "application/json",
+					"htv:methodName": "GET",
+					"subprotocol": "longpoll"
+				}
+			]
+		},
+		"state": {
+			"type": "string",
+			"enum": [
+				"enabled",
+				"disabled"
+			],
+			"readOnly": true,
+			"writeonly": true,
+			"forms": [{
+					"op": "readproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "GET"
+				},
+				{
+					"op": "writeproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "POST"
+				}
+			]
+		},
+		"updateFrequency": {
+			"type": "number",
+			"enum": [
+				1,
+				10,
+				100
+			],
+			"unit": "Hertz",
+			"readOnly": true,
+			"writeonly": true,
+			"forms": [{
+					"op": "readproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "GET"
+				},
+				{
+					"op": "writeproperty",
+					"href": "http://example.org/robot1",
+					"contentType": "application/json",
+					"htv:methodName": "POST"
+				}
+			]
+		}
+
+	},
+	"forms": [{
+		"op": "readallproperties",
+		"href": "http://example.org/robot1",
+		"contentType": "application/json",
+		"htv:methodName": "GET"
+	}],
+
+	"actions": {
+		"goHome": {
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json"
+			}]
+
+		},
+
+		"goTo": {
+			"input": {
+				"type": "object",
+				"properties": {
+					"x": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 180
+					},
+					"y": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 90
+					},
+					"z": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 20
+					}
+
+				},
+				"required": ["x", "y", "z"],
+				"additionalproperties": "false"
+
+			},
+
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/robot1",
+				"htv:methodName": "POST",
+				"contentType": "application/json"
+			}]
+
+
+		},
+		"rotate": {
+
+			"input": {
+				"type": "number",
+				"minimum": 0,
+				"maximum": 360
+			},
+
+			"output": {
+				"type": "object",
+				"properties": {
+					"x": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 180
+					},
+					"y": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 90
+					},
+					"z": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 20
+					}
+
+				},
+				"required": ["x", "y", "z"],
+				"additionalproperties": "false"
+			},
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json",
+				"htv:methodName": "POST",
+				"response": {
+					"contentType": "application/json"
+				}
+			}]
+
+
+
+		}
+	},
+
+	"events": {
+		"emergencyButton": {
+			"subscription": {},
+			"forms": [{
+				"op": "subscribeevent",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json"
+			}]
+		},
+
+		"limitHit": {
+
+			"subscription": {
+				
+			},
+
+			"data": {
+				"type": "object",
+				"properties": {
+					"axis": {
+						"type": "string",
+						"enum": ["x", "y", "z"]
+					}
+				},
+				"if": {
+					"properties": {
+						"axis": {
+							"const": "z"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"direction": {
+							"type": "string",
+							"enum": ["positive"]
+						}
+					}
+				},
+				"else": {
+					"properties": {
+						"direction": {
+							"type": "string",
+							"enum": ["positive", "negative"]
+						}
+					}
+				},
+				"additionalProperties": false,
+
+				"required": ["axis", "direction"]
+			},
+			"forms": [{
+				"op": "subscribeevent",
+				"href": "http://example.org/robot1",
+				"contentType": "application/json",
+				"htv:methodName": "POST"
+			}]
+
+
+		}
+	}
+
+}
