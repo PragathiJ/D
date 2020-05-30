@@ -70,7 +70,7 @@
 					"op": "writeproperty",
 					"href": "http://example.org/robot1",
 					"contentType": "application/json",
-					"htv:methodName": "POST"
+					"htv:methodName": "PUT"
 				}
 			]
 		},
@@ -259,7 +259,7 @@
 				"op": "subscribeevent",
 				"href": "http://example.org/robot1",
 				"contentType": "application/json",
-				"htv:methodName": "POST"
+				"htv:methodName": "GET"
 			}]
 
 
