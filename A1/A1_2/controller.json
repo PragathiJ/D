@@ -28,12 +28,12 @@
                 "htv:methodName": "POST"
 			}],
             "links": [{
-             "rel": "controlledBy",
+             "rel": "replies",
              "href": "http://example.org/robot1/writestate",
              "type": "application/td+json"
 },
 {
-             "rel": "controlledBy",
+             "rel": "replies",
              "href": "http://example.org/robot2/writestate",
              "type": "application/td+json"
 }]
@@ -50,12 +50,12 @@
                 "htv:methodName": "POST"
 			}],
              "links": [{
-             "rel": "controlledBy",
+             "rel": "replies",
              "href": "http://example.org/robot1/writestate",
              "type": "application/td+json"
 },
 {
-             "rel": "controlledBy",
+             "rel": "replies",
              "href": "http://example.org/robot2/writestate",
              "type": "application/td+json"
 }]
@@ -72,12 +72,12 @@
                 "htv:methodName": "POST"
 			}],
              "links": [{
-             "rel": "controlledBy",
+             "rel": "replies",
              "href": "http://example.org/robot1/RobotGoHome",
              "type": "application/td+json"
 },
 {
-             "rel": "controlledBy",
+             "rel": "replies",
              "href": "http://example.org/robot2/RobotToGoSpecificLocation",
              "type": "application/td+json"
 }]
