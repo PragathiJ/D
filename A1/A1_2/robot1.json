@@ -40,13 +40,13 @@
 			"observable": true,
 			"forms": [{
 					"op": "readproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/readlocation",
 					"contentType": "application/json",
 					"htv:methodName": "GET"
 				},
 				{
 					"op": "observeproperty",
-					"href": "http://example.org/robot1/observeprop",
+					"href": "http://example.org/robot1/observelocation",
 					"contentType": "application/json",
 					"htv:methodName": "GET",
 					"subprotocol": "longpoll"
@@ -63,13 +63,13 @@
 			"writeonly": true,
 			"forms": [{
 					"op": "readproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/readstate",
 					"contentType": "application/json",
 					"htv:methodName": "GET"
 				},
 				{
 					"op": "writeproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/writestate",
 					"contentType": "application/json",
 					"htv:methodName": "PUT"
 				}
@@ -87,13 +87,13 @@
 			"writeonly": true,
 			"forms": [{
 					"op": "readproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/readfrequency",
 					"contentType": "application/json",
 					"htv:methodName": "GET"
 				},
 				{
 					"op": "writeproperty",
-					"href": "http://example.org/robot1",
+					"href": "http://example.org/robot1/writefrequency",
 					"contentType": "application/json",
 					"htv:methodName": "POST"
 				}
@@ -103,7 +103,7 @@
 	},
 	"forms": [{
 		"op": "readallproperties",
-		"href": "http://example.org/robot1",
+		"href": "http://example.org/robot1/readalltheproperties",
 		"contentType": "application/json",
 		"htv:methodName": "GET"
 	}],
@@ -114,7 +114,7 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/togoHome",
 				"contentType": "application/json"
 			}]
 
@@ -150,7 +150,7 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/goToSpecificLocation",
 				"htv:methodName": "POST",
 				"contentType": "application/json"
 			}]
@@ -192,7 +192,7 @@
 			"idempotent": false,
 			"forms": [{
 				"op": "invokeaction",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/rotateRobot",
 				"contentType": "application/json",
 				"htv:methodName": "POST",
 				"response": {
@@ -210,7 +210,7 @@
 			"subscription": {},
 			"forms": [{
 				"op": "subscribeevent",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/indicateEmergency",
 				"contentType": "application/json"
 			}]
 		},
@@ -258,7 +258,7 @@
 			},
 			"forms": [{
 				"op": "subscribeevent",
-				"href": "http://example.org/robot1",
+				"href": "http://example.org/robot1/IndicateOutOfLimit",
 				"contentType": "application/json",
 				"htv:methodName": "GET"
 			}]
