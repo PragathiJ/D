@@ -45,7 +45,7 @@
 				},
 				{
 					"op": "observeproperty",
-					"href": "http://example.com/robot1/observeprop",
+					"href": "http://example.org/robot1/observeprop",
 					"contentType": "application/json",
 					"htv:methodName": "GET",
 					"subprotocol": "longpoll"
