@@ -1,0 +1,89 @@
+{
+	"@context": ["https://www.w3.org/2019/wot/td/v1",
+    
+        {"htv":"http://example.org/controller" }],
+
+	"title": "Robot Controller",
+	"description": "Thing description for a Two Robots controller",
+
+	"securityDefinitions": {
+		"basic_sc": {
+        "in":"header",
+        "scheme": "basic"
+    }
+	},
+
+	"security": "basic_sc",
+
+	
+
+	"actions": {
+		"startSystem": {
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/controller/EnableRobotState",
+				"contentType": "application/json",
+                "htv:methodName": "POST"
+			}],
+            "links": [{
+             "rel": "controlledBy",
+             "href": "http://example.org/robot1/writestate",
+             "type": "application/td+json"
+},
+{
+             "rel": "controlledBy",
+             "href": "http://example.org/robot2/writestate",
+             "type": "application/td+json"
+}]
+
+		},
+
+		"stopSystem": {
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/controller/DisableRobotState",
+				"contentType": "application/json",
+                "htv:methodName": "POST"
+			}],
+             "links": [{
+             "rel": "controlledBy",
+             "href": "http://example.org/robot1/writestate",
+             "type": "application/td+json"
+},
+{
+             "rel": "controlledBy",
+             "href": "http://example.org/robot2/writestate",
+             "type": "application/td+json"
+}]
+
+
+		},
+		"action1": {
+			"safe": false,
+			"idempotent": false,
+			"forms": [{
+				"op": "invokeaction",
+				"href": "http://example.org/controller/MoveRobot",
+				"contentType": "application/json",
+                "htv:methodName": "POST"
+			}],
+             "links": [{
+             "rel": "controlledBy",
+             "href": "http://example.org/robot1/RobotGoHome",
+             "type": "application/td+json"
+},
+{
+             "rel": "controlledBy",
+             "href": "http://example.org/robot2/RobotToGoSpecificLocation",
+             "type": "application/td+json"
+}]
+
+
+		}
+	}
+
+}
