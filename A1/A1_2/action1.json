@@ -1,0 +1,13 @@
+[{
+		"op": "invokeaction",
+		"href": "http://example.org/robot1/RobotGoHome",
+		"contentType": "application/json",
+		"htv:methodName": "POST"
+	},
+	{
+		"op": "invokeaction",
+		"href": "http://example.org/robot2/RobotToGoSpecificLocation",
+		"htv:methodName": "POST",
+		"contentType": "application/json"
+	}
+]
